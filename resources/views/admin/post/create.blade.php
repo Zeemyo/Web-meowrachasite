@@ -9,7 +9,7 @@
     <form action="/post" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label for="judul">Post</label>
+            <label for="judul">Judul Artikel</label>
             <input type="text" class="form-control" id="judul" name="judul" value="{{old('judul')}}">
             @error('judul')
                 <small class="text-danger">{{ $message }}</small>
@@ -26,7 +26,7 @@
         <div class="form-group">
             <label for="kategori">Kategori</label>
             <select class="form-control" id="kategori" name="kategori">
-                <option selected disabled>Pilih Katgeori</option>
+                <option selected disabled>Pilih Kategori</option>
                 @foreach ($kategori as $row)
                     <option value="{{$row->id}}">{{$row->nama}}</option>
                 @endforeach

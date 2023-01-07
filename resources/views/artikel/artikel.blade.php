@@ -3,8 +3,12 @@
 
 @section('content')
 
+
+
+  
+
    <div class="card mt-4 shadow-sm">
-        <img src="/upload/post/{{$artikel->sampul}}" height="400px" class="card-img-top" alt="...">
+        <img src="/upload/post/{{$artikel->sampul}}" height="auto" class="card-img-top" alt="...">
         <div class="card-body">
             <h3 class="card-title">{{$artikel->judul}}</h3>
             <small class="card-text">

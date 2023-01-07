@@ -20,7 +20,7 @@
                 <th scope="col">Sampul</th>
                 <th scope="col">Judul</th>
                 <th scope="col">Kategori</th>
-                <th scope="col">Tag</th>
+                <th scope="col">Deskripsi</th>
                 <th scope="col">Aksi</th>
                 </tr>
             </thead>
@@ -32,7 +32,7 @@
                     <td>{{$row->judul}}</td>
                     <td>{{$row->kategori->nama}}</td>
                     <td>
-                       
+                    {{$row->konten = substr($row->konten, 0, 80)}}
                     </td>
                     <td width="35%">
                         <div class="btn-group" role="group" aria-label="Basic example">

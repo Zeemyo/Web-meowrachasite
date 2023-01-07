@@ -19,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::select('id', 'judul', 'sampul', 'id_kategori')->latest()->paginate(10);
+        $post = Post::latest()->paginate(10);
         return view('admin/post/index', compact('post'));
     }
 

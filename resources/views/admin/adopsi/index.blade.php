@@ -7,7 +7,7 @@
     {!! session('sukses') !!}
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">adopsi</h1>
+    <h1 class="h3 mb-4 text-gray-800">Adopsi</h1>
 
     <a href="/adopsi/create/" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Tambah adopsi</a>
 
@@ -17,7 +17,9 @@
             <thead>
                 <tr>
                 <th scope="col">No</th>
-                <th scope="col">Title</th>
+                <th scope="col">Image</th>
+                <th scope="col">Nama Kucing</th>
+                <th scope="col">Jenis Kucing</th>
                 <th scope="col">Alasan Owner</th>
                 <th scope="col">Medical Note</th>
                 <th scope="col">Deskripsi</th>
@@ -28,8 +30,10 @@
                 @foreach ($adopsi as $row)
                     <tr>
                     <th scope="row">{{$loop->iteration}}</th>
-                    
-                    <td>{{$row->title}}</td>
+
+                    <td><img src="/upload/adopsi/{{$row->image}}" alt="" width="80px" height="80px"></td>
+                    <td>{{$row->nama_kucing}}</td>
+                    <td>{{$row->jenis_kucing}}</td>
                     <td>{{$row->alasan_owner}}</td>
                     <td>{{$row->medical_note}}</td>
                     <td>{{$row->deskripsi}}</td>

@@ -16,7 +16,7 @@ class KucingController extends Controller
      */
     public function index()
     {
-        $kucing = Kucing::select('id',  'nama_kucing', 'image', 'jenis_kucing')->latest()->paginate(5);
+        $kucing = Kucing::latest()->paginate(5);
         return view('admin/kucing/index', compact('kucing'));
     }
 
@@ -42,7 +42,10 @@ class KucingController extends Controller
             
             'nama_kucing' => 'required',
             'image' => 'required|mimes:jpg,jpeg,png',
-            'jenis_kucing' => 'required'
+            'ras' => 'required',
+            'gender' => 'required',
+            'umur' => 'required',
+            'merk_makanan' => 'required'
             
         ]);
 
@@ -52,7 +55,10 @@ class KucingController extends Controller
         Kucing::create([
             'image' => $image,
             'nama_kucing' => $request->nama_kucing,
-            'jenis_kucing' => $request->jenis_kucing
+            'ras' => $request->ras,
+            'gender' => $request->gender,
+            'umur' => $request->umur,
+            'merk_makanan' => $request->merk_makanan
         ]);
 
         $request->session()->flash('sukses', '
@@ -71,7 +77,8 @@ class KucingController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Kucing::select('id', 'image', 'nama_kucing', 'ras', 'gender', 'umur', 'merk_makanan')->whereId($id)->firstOrFail();
+        return view('admin/kucing/show', compact('kucing'));
     }
 
     /**
@@ -82,7 +89,7 @@ class KucingController extends Controller
      */
     public function edit($id)
     {
-        $kucing = Kucing::select('id', 'image', 'nama_kucing', 'jenis_kucing')->whereId($id)->first();
+        $kucing = Kucing::select('id', 'image', 'nama_kucing', 'ras', 'gender', 'umur', 'merk_makanan')->whereId($id)->first();
         return view('admin/kucing/edit', compact('kucing'));
     }
 
@@ -99,12 +106,18 @@ class KucingController extends Controller
             
             'image' => 'required|mimes:jpg,jpeg,png',
             'nama_kucing' => 'required',
-            'jenis_kucing' => 'required'
+            'ras' => 'required',
+            'gender' => 'required',
+            'umur' => 'required',
+            'merk_makanan' => 'required'
         ]);
 
         $data = [
             'nama_kucing' => $request->nama_kucing,
-            'jenis_kucing' => $request->jenis_kucing
+            'ras' => $request->ras,
+            'gender' => $request->gender,
+            'umur' => $request->umur,
+            'merk_makanan' => $request->merk_makanan
         ];
 
         $kucing = Kucing::select('image', 'id')->whereId($id)->first();
@@ -135,8 +148,12 @@ class KucingController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        Kucing::whereId($id)->delete();
+        // $kucing = Kucing::select('id', 'image', 'nama_kucing', 'ras', 'gender', 'umur', 'merk_makanan')->whereId($id);
 
+        // $data = ['id', 'image', 'nama_kucing', 'ras', 'gender', 'umur', 'merk_makanan'];
+
+        Kucing::whereId($id)->delete();
+        
         $request->session()->flash('sukses', '
             <div class="alert alert-success" role="alert">
                 Data berhasil dihapus

@@ -16,9 +16,30 @@
             @enderror
         </div>
         <div class="form-group">
-            <label for="jenis_kucing">Jenis Kucing</label>
-            <input type="text" class="form-control" id="jenis_kucing" name="jenis_kucing">
-            @error('jenis_kucing')
+            <label for="ras">Ras Kucing</label>
+            <input type="text" class="form-control" id="ras" name="ras">
+            @error('ras')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="gender">Jenis Kelamin</label>
+            <input type="text" class="form-control" id="gender" name="gender">
+            @error('gender')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="umur">Umur Kucing</label>
+            <input type="text" class="form-control" id="umur" name="umur">
+            @error('umur')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="merk_makanan">Merk Makanan</label>
+            <input type="text" class="form-control" id="merk_makanan" name="merk_makanan">
+            @error('merk_makanan')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>

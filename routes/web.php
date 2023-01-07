@@ -1,11 +1,15 @@
 <?php
 
-use App\Http\Controllers\ArtikelController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KucingController;
 use App\Http\Controllers\AdopsiController;
+use App\Http\Controllers\KonsultasiController;
+use App\Http\Controllers\PenitipanController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,40 +25,54 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('/admin/dashboard');
-});
 
-// Route::get('/artikel', function () {
-//     return view('/admin/artikel');
-// });
 
-Route::get('/konsultasi', function () {
-    return view('/admin/konsultasi');
-});
 
-Route::get('/penitipan', function () {
-    return view('/admin/penitipan');
-});
-
-Route::get('/adopsi', function () {
-    return view('/admin/adopsi');
-});
-
-// Route::get('/post', function () {
-//     return view('/admin/post');
-// });
 Auth::routes();
 
-Route::resource('/post', 'PostController');
-Route::resource('/kategori', 'KategoriController');
-Route::resource('/kucing', 'KucingController');
-Route::resource('/adopsi', 'AdopsiController');
 
-// Route::get('/', 'ArtikelController@index');
-// Route::get('/{slug}', 'ArtikelController@artikel');
-// Route::get('/artikel-kategori/{slug}', 'ArtikelController@kategori');
+Route::group(['middleware' => ['auth','ceklevel:admin,user']], function () {
 
-Route::get('/', [ArtikelController::class, 'index']);
-Route::get('/{slug}', [ArtikelController::class, 'artikel']);
-Route::get('/artikel-kategori/{slug}', [ArtikelController::class, 'kategori']);
+    Route::get('/transaksi', function () {
+        return view('/admin/transaksi');
+    });
+    Route::get('/dashboard', function () {
+        return view('/admin/dashboard');
+    });
+    
+    Route::get('/konsultasi', function () {
+        return view('/admin/konsultasi');
+    });
+    
+    Route::get('/penitipan', function () {
+        return view('/admin/penitipan');
+    });
+    
+    Route::get('/adopsi', function () {
+        return view('/admin/adopsi');
+    });
+
+    Route::resource('/post', 'PostController');
+
+    Route::resource('/kategori', 'KategoriController');
+
+    Route::resource('/kucing', 'KucingController');
+          
+
+    Route::resource('/adopsi', 'AdopsiController');
+
+    Route::resource('/konsultasi', 'KonsultasiController');
+
+    Route::resource('/penitipan', 'PenitipanController');
+
+
+
+});
+
+
+    route::get('/home',[HomeController::class,'index'])->name('home');    
+    Route::get('/', [ArtikelController::class, 'index']);
+    Route::get('/{slug}', [ArtikelController::class, 'artikel']);
+    Route::get('/artikel-kategori/{slug}', [ArtikelController::class, 'kategori']);
+ 
+    

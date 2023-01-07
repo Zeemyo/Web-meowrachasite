@@ -17,7 +17,10 @@ class CreateKucingTable extends Migration
             $table->id();
             $table->string('image', 50);
             $table->string('nama_kucing', 50);
-            $table->string('jenis_kucing', 50);
+            $table->string('ras', 50);
+            $table->string('gender', 50);
+            $table->string('umur', 50);
+            $table->string('merk_makanan', 50);
             $table->timestamps();
         });
     }

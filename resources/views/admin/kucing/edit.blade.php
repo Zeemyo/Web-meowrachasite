@@ -20,8 +20,20 @@
             <input type="text" class="form-control" id="nama_kucing" name="nama_kucing" value="{{$kucing->nama_kucing}}">
         </div>
         <div class="form-group">
-            <label for="nama">Jenis Kucing</label>
-            <input type="text" class="form-control" id="jenis_kucing" name="jenis_kucing" value="{{$kucing->jenis_kucing}}">
+            <label for="nama">Ras Kucing</label>
+            <input type="text" class="form-control" id="ras" name="ras" value="{{$kucing->ras}}">
+        </div>
+        <div class="form-group">
+            <label for="nama">Jenis Kelamin</label>
+            <input type="text" class="form-control" id="gender" name="gender" value="{{$kucing->gender}}">
+        </div>
+        <div class="form-group">
+            <label for="nama">Umur Kucing</label>
+            <input type="text" class="form-control" id="umur" name="umur" value="{{$kucing->umur}}">
+        </div>
+        <div class="form-group">
+            <label for="nama">Merk Makanan</label>
+            <input type="text" class="form-control" id="merk_makanan" name="merk_makanan" value="{{$kucing->merk_makanan}}">
         </div>
         <button type="submit" class="btn btn-primary btn-sm">Edit</button>
         <a href="/kucing" class="btn btn-secondary btn-sm">Kembali</a>

@@ -16,7 +16,11 @@ class CreateAdopsiTable extends Migration
     {
         Schema::create('adopsi', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 50);
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->string('image', 50);
+            $table->string('nama_kucing', 50);
+            $table->string('jenis_kucing', 50);
             $table->string('alasan_owner', 50);
             $table->string('medical_note');
             $table->text('deskripsi');

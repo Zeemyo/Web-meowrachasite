@@ -15,6 +15,8 @@ class CreatePostTable extends Migration
     {
         Schema::create('post', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_kategori');
+            $table->foreign('id_kategori')->references('id')->on('kategori')->onDelete('cascade');
             $table->string('sampul', 50);
             $table->string('judul', 50);
             $table->text('konten');
