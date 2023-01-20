@@ -1,33 +1,26 @@
 @extends('sb-admin/app')
+@section('title', 'penitipan')
 
-@section('title', 'Transaksi')
 
 @section('content')
+    {{-- flashdata --}}
+    {!! session('sukses') !!}
+    <h1 class="mb-5 text-center">Transactions</h1>
 
-
-
-<div class="card text-center">
-  <div class="card-header">
-    Pembayaran
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">BSI 6635981310 HASNA ZAHIDAH</h5>
-    <p class="card-text">silakan lakukan pembayaran ke nomor rekening tersebut dan upload bukti pembayaran.</p>
-    <div class="mb-3">
-  
-    <label for="image" class="card-body"><b>Upload bukti pembayaran disini</label>
-    <br>
-    <input type="file" class="" id="image" name="image"  >
-            @error('image')
-                <small class="text-danger">{{ $message }}</small>
-            @enderror
-            <br>
-            <br>
-            <button type="submit" class="btn btn-primary btn-sm">Upload bukti pembayaran</button>
-       
-  </div>
-  
-</div>
-
-
+    <table class="table table-white text-white text-center mt-3" width="100%">
+        <thead>
+            <tr>
+                <td>Nomor Order</td>
+                <td>VA Number</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($transactions as $transaction)
+                <tr>
+                    <td>{{ $transaction->id_penitipan }}</td>
+                    <td>{{ $transaction->midtrans_va_number }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 @endsection
