@@ -64,7 +64,11 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,user']], function () {
 
     Route::resource('/penitipan/transaksi', 'TransaksiController');
 
-    Route::get('/transaksi', [TransaksiController::class, 'index']);
+    // Route::get('/transaksi', [TransaksiController::class, 'index']);
+
+
+
+    Route::get('/transaksi/{id_penitipan}',  [TransaksiController::class, 'show']);
 
 
     Route::put('penitipan/approve/{status}', [PenitipanController::class, 'approve']);

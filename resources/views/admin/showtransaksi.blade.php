@@ -15,10 +15,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>{{ $transaksi->id_penitipan }}</td>
-                <td>{{ $transaksi->midtrans_va_number }}</td>
-            </tr>
+            @foreach ($transactions as $transaction)
+                <tr>
+                    <td>{{ $transaction->id_penitipan }}</td>
+                    <td>{{ $transaction->midtrans_va_number }}</td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 

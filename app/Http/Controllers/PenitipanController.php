@@ -79,7 +79,7 @@ class PenitipanController extends Controller
             </div>
         ');
 
-        return redirect('/transaksi');
+        return redirect('/transaksi/');
     }
     /**
      * Display the specified resource.

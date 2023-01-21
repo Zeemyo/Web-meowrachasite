@@ -49,8 +49,10 @@
                     <td>{{ $row->status }}</td>
                     <td width="20%">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="/penitipan/{{ $row->id }}/edit" class="btn btn-primary btn-sm mr-1"><i
-                                    class="fas fa-edit"></i> Edit</a>
+                            {{-- <a href="/penitipan/{{ $row->id }}/edit" class="btn btn-primary btn-sm mr-1"><i
+                                    class="fas fa-edit"></i> Edit</a> --}}
+                            <a href="/transaksi/{{ $row->id }}" class="btn btn-primary btn-sm mr-1"><i
+                                    class="fas fa-edit"></i> Virtual Number</a>
                             <form action="/penitipan/{{ $row->id }}" method="post">
                                 @method('DELETE')
                                 @csrf
@@ -102,12 +104,12 @@
                         <td>{{ $row->status }}</td>
                         <td width="20%">
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <form action="/penitipan/approve/{{ $row->id }}" method="post">
+                                {{-- <form action="/penitipan/approve/{{ $row->id }}" method="post">
                                     @method('PUT')
                                     @csrf
                                     <button type="submit" class="btn btn-primary btn-sm mr-1"><i class="fas fa-trash"></i>
                                         Approve</button>
-                                </form>
+                                </form> --}}
                                 <form action="/penitipan/{{ $row->id }}" method="post">
                                     @method('DELETE')
                                     @csrf
