@@ -33,9 +33,6 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth', 'ceklevel:admin,user']], function () {
 
-    Route::get('/transaksi', function () {
-        return view('/admin/transaksi');
-    });
     Route::get('/dashboard', function () {
         return view('/admin/dashboard');
     });
@@ -66,7 +63,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,user']], function () {
 
     Route::resource('/penitipan/transaksi', 'TransaksiController');
 
-    Route::get('/', [TransaksiController::class, 'index']);
+    Route::get('/transaksi', [TransaksiController::class, 'index']);
 
 
     Route::put('penitipan/approve/{status}', [PenitipanController::class, 'approve']);

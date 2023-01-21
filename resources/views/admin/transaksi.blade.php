@@ -5,9 +5,9 @@
 @section('content')
     {{-- flashdata --}}
     {!! session('sukses') !!}
-    <h1 class="mb-5 text-center">Transactions</h1>
+    <h1 class="mb-5 text-center">Virtual Account Transaksi</h1>
 
-    <table class="table table-white text-white text-center mt-3" width="100%">
+    <table class="table text-center mt-3" width="100%">
         <thead>
             <tr>
                 <td>Nomor Order</td>
@@ -23,4 +23,6 @@
             @endforeach
         </tbody>
     </table>
+
+    <a href="/penitipan" class="btn btn-secondary btn-sm">Kembali</a>
 @endsection

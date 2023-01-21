@@ -17,7 +17,6 @@ class TransaksiController extends Controller
             'transactions' => $transactions
         ];
 
-        dd($data);
         return view('admin.transaksi', $data);
     }
 }
