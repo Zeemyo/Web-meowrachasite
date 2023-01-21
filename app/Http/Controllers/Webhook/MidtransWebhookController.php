@@ -23,7 +23,7 @@ class MidtransWebhookController extends Controller
 
                 // Find Penitipan
                 $penitipan = Penitipan::find($transaction->id_penitipan);
-                $penitipan->status = true;
+                $penitipan->status = 'Approved';
                 $penitipan->save();
             }
 
