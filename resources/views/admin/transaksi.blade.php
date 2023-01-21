@@ -6,6 +6,7 @@
     {{-- flashdata --}}
     {!! session('sukses') !!}
     <h1 class="mb-5 text-center">Virtual Account Transaksi</h1>
+    <center>Lakukan Pembayaran Dengan Nomor Virtual Account Di bawah ini</center>
 
     <table class="table text-center mt-3" width="100%">
         <thead>
