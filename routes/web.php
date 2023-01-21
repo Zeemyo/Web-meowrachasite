@@ -9,6 +9,7 @@ use App\Http\Controllers\AdopsiController;
 use App\Http\Controllers\KonsultasiController;
 use App\Http\Controllers\PenitipanController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\Webhook\MidtransWebhookController;
 use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------

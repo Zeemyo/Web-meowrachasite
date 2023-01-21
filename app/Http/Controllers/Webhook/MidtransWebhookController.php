@@ -15,11 +15,11 @@ class MidtransWebhookController extends Controller
         DB::beginTransaction();
         try {
             // Making Sure Webhook From Midtrans
-            $hash = hash('sha512', $request->id_penitipan . $request->status_code . $request->gross_amount . env('MIDTRANS_SERVER_KEY'));
+            $hash = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . env('MIDTRANS_SERVER_KEY'));
 
             if ($request->signature_key === $hash) {
                 // Find Transaksi
-                $transaction = Transaksi::where('midtrans_order_id', $request->id_penitipan)->first();
+                $transaction = Transaksi::where('midtrans_order_id', $request->order_id)->first();
 
                 // Find Penitipan
                 $penitipan = Penitipan::find($transaction->id_penitipan);
