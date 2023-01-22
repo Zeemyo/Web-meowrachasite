@@ -82,6 +82,12 @@
                 <input class="form-check-input" type="radio" name="antar_jemput" id="antar_jemput" value="35000">
                 <label for="antar_jemput" class="form-label">Antar Jemput</label>
             </div>
+
+            <a>Alamat</a>
+            <div>
+                <textarea type="text" name="alamat" id="alamat" rows="8" cols="50">
+                </textarea>
+            </div>
             {{-- <input type="text" class="form-control" id="antar_jemput" name="antar_jemput">
             @error('antar_jemput')
                 <small class="text-danger">{{ $message }}</small>

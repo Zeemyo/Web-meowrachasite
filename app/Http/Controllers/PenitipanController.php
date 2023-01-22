@@ -46,8 +46,9 @@ class PenitipanController extends Controller
             'tanggal_titip' => 'required',
             'tanggal_checkout' => 'required',
             'lama_titip' => 'required',
-            'layanan' => 'required',
+            'layanan',
             'antar_jemput',
+            'alamat',
             'id_kucing' => 'required',
             'id_user' => 'required'
         ]);
@@ -58,6 +59,7 @@ class PenitipanController extends Controller
         $penitipan->lama_titip = Str::title($request->lama_titip);
         $penitipan->layanan = $request->layanan;
         $penitipan->antar_jemput = $request->antar_jemput;
+        $penitipan->alamat = $request->alamat;
         $penitipan->id_kucing = $request->id_kucing;
         $penitipan->id_user = $request->id_user;
         $penitipan->save();
@@ -79,7 +81,7 @@ class PenitipanController extends Controller
             </div>
         ');
 
-        return redirect('/transaksi/');
+        return redirect('/penitipan');
     }
     /**
      * Display the specified resource.
@@ -118,8 +120,9 @@ class PenitipanController extends Controller
             'tanggal_titip' => 'required',
             'tanggal_checkout' => 'required',
             'lama_titip' => 'required',
-            'layanan' => 'required',
-            'antar_jemput' => 'required',
+            'layanan',
+            'antar_jemput',
+            'alamat',
             'id_kucing' => 'required',
             'id_user' => 'required',
             'status' => 'required'
@@ -129,8 +132,9 @@ class PenitipanController extends Controller
             'tanggal_titip' => Str::title($request->tanggal_titip),
             'tanggal_checkout' => Str::title($request->tanggal_checkout),
             'lama_titip' => Str::title($request->lama_titip),
-            'layanan' => Str::title($request->layanan),
-            'antar_jemput' => Str::title($request->antar_jemput),
+            'layanan' => $request->layanan,
+            'antar_jemput' => $request->antar_jemput,
+            'alamat' => $request->alamat,
             'id_kucing' => $request->id_kucing,
             'id_user' => $request->id_user,
             'status' => Str::title($request->status)

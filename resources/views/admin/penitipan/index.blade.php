@@ -20,13 +20,14 @@
                 <th scope="col">Nama Pemilik</th>
                 <th scope="col">Nama Kucing</th>
                 {{-- <th scope="col">Ras</th> --}}
-                <th scope="col">Gender</th>
+                {{-- <th scope="col">Gender</th> --}}
                 {{-- <th scope="col">Umur</th>
                 <th scope="col">Merk Makanan</th> --}}
                 <th scope="col">Tanggal Titip</th>
                 <th scope="col">Lama Titip</th>
                 <th scope="col">Layanan</th>
                 <th scope="col">Antar Jemput</th>
+                <th scope="col">Alamat</th>
                 <th scope="col">Status</th>
                 <th scope="col">Aksi</th>
             </tr>
@@ -38,7 +39,7 @@
                     <td>{{ $row->users->name }}</td>
                     <td>{{ $row->kucing->nama_kucing }}</td>
                     {{-- <td>{{ $row->kucing->ras }}</td> --}}
-                    <td>{{ $row->kucing->gender }}</td>
+                    {{-- <td>{{ $row->kucing->gender }}</td> --}}
                     {{-- <td>{{ $row->kucing->umur }}</td> --}}
                     {{-- <td>{{ $row->kucing->merk_makanan }}</td> --}}
                     <td>{{ $row->tanggal_titip }}</td>
@@ -46,13 +47,14 @@
                     <td>{{ $row->lama_titip }}</td>
                     <td>{{ $row->layanan }}</td>
                     <td>{{ $row->antar_jemput }}</td>
+                    <td>{{ $row->alamat }}</td>
                     <td>{{ $row->status }}</td>
                     <td width="20%">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             {{-- <a href="/penitipan/{{ $row->id }}/edit" class="btn btn-primary btn-sm mr-1"><i
                                     class="fas fa-edit"></i> Edit</a> --}}
-                            <a href="/transaksi/{{ $row->id }}" class="btn btn-primary btn-sm mr-1"><i
-                                    class="fas fa-edit"></i> Virtual Number</a>
+                            <a href="/transaksi/{{ $row->id }}" class="btn btn-primary btn-sm mr-1">
+                                <i class="fa fa-check-square"></i> Virtual Number</a>
                             <form action="/penitipan/{{ $row->id }}" method="post">
                                 @method('DELETE')
                                 @csrf
@@ -75,13 +77,14 @@
                     <th scope="col">Nama Pemilik</th>
                     <th scope="col">Nama Kucing</th>
                     {{-- <th scope="col">Ras</th> --}}
-                    <th scope="col">Gender</th>
+                    {{-- <th scope="col">Gender</th> --}}
                     {{-- <th scope="col">Umur</th>
                 <th scope="col">Merk Makanan</th> --}}
                     <th scope="col">Tanggal Titip</th>
                     <th scope="col">Lama Titip</th>
                     <th scope="col">Layanan</th>
                     <th scope="col">Antar Jemput</th>
+                    <th scope="col">Alamat</th>
                     <th scope="col">Status</th>
                     <th scope="col">Aksi</th>
                 </tr>
@@ -93,7 +96,7 @@
                         <td>{{ $row->users->name }}</td>
                         <td>{{ $row->kucing->nama_kucing }}</td>
                         <!-- <td>{{ $row->kucing->ras }}</td> -->
-                        <td>{{ $row->kucing->gender }}</td>
+                        {{-- <td>{{ $row->kucing->gender }}</td> --}}
                         <!-- <td>{{ $row->kucing->umur }}</td> -->
                         <!-- <td>{{ $row->kucing->merk_makanan }}</td> -->
                         <td>{{ $row->tanggal_titip }}</td>
@@ -101,6 +104,7 @@
                         <td>{{ $row->lama_titip }}</td>
                         <td>{{ $row->layanan }}</td>
                         <td>{{ $row->antar_jemput }}</td>
+                        <td>{{ $row->alamat }}</td>
                         <td>{{ $row->status }}</td>
                         <td width="20%">
                             <div class="btn-group" role="group" aria-label="Basic example">
