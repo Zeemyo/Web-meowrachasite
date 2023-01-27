@@ -34,38 +34,46 @@
         </thead>
         <tbody>
             @foreach ($penitipan as $row)
-                <tr>
-                    <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $row->users->name }}</td>
-                    <td>{{ $row->kucing->nama_kucing }}</td>
-                    {{-- <td>{{ $row->kucing->ras }}</td> --}}
-                    {{-- <td>{{ $row->kucing->gender }}</td> --}}
-                    {{-- <td>{{ $row->kucing->umur }}</td> --}}
-                    {{-- <td>{{ $row->kucing->merk_makanan }}</td> --}}
-                    <td>{{ $row->tanggal_titip }}</td>
-                    <!-- <td>{{ $row->tanggal_checkout }}</td> -->
-                    <td>{{ $row->lama_titip }}</td>
-                    <td>{{ $row->layanan }}</td>
-                    <td>{{ $row->antar_jemput }}</td>
-                    <td>{{ $row->alamat }}</td>
-                    <td>{{ $row->status }}</td>
-                    <td width="20%">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            {{-- <a href="/penitipan/{{ $row->id }}/edit" class="btn btn-primary btn-sm mr-1"><i
+                @if ($row->id_user == Auth::id() || Auth::user()->role == 'admin')
+                    <tr>
+                        <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ $row->users->name }}</td>
+                        <td>{{ $row->kucing->nama_kucing }}</td>
+                        {{-- <td>{{ $row->kucing->ras }}</td> --}}
+                        {{-- <td>{{ $row->kucing->gender }}</td> --}}
+                        {{-- <td>{{ $row->kucing->umur }}</td> --}}
+                        {{-- <td>{{ $row->kucing->merk_makanan }}</td> --}}
+                        <td>{{ $row->tanggal_titip }}</td>
+                        <!-- <td>{{ $row->tanggal_checkout }}</td> -->
+                        <td>{{ $row->lama_titip }}</td>
+                        <td>{{ $row->layanan }}</td>
+                        <td>{{ $row->antar_jemput }}</td>
+                        <td>{{ $row->alamat }}</td>
+                        <td>{{ $row->status }}</td>
+                        <td width="20%">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                {{-- <a href="/penitipan/{{ $row->id }}/edit" class="btn btn-primary btn-sm mr-1"><i
                                     class="fas fa-edit"></i> Edit</a> --}}
-                            <a href="/transaksi/{{ $row->id }}" class="btn btn-primary btn-sm mr-1">
-                                <i class="fa fa-check-square"></i> Virtual Number</a>
-                            <form action="/penitipan/{{ $row->id }}" method="post">
-                                @method('DELETE')
-                                @csrf
-                                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>
-                                    Hapus</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
+                                @if ($row->id_user == Auth::id() || Auth::user()->role == 'admin')
+                                    <a href="/transaksi/{{ $row->id }}" class="btn btn-primary btn-sm mr-1">
+                                        <i class="fa fa-check-square"></i> Virtual Number</a>
+                                @endif
+
+                                @if ($row->id_user == Auth::id() || Auth::user()->role == 'admin')
+                                    <form action="/penitipan/{{ $row->id }}" method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>
+                                            Hapus</button>
+                                    </form>
+                                @endif
+                            </div>
+                        </td>
+                    </tr>
+                @endif
             @endforeach
         </tbody>
+
 
     </table>
 

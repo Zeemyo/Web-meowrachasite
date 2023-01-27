@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Users;
 use App\Models\Adopsi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -22,8 +23,8 @@ class AdopsiController extends Controller
      */
     public function create()
     {
-        
-        return view('admin/adopsi/create');
+        $users = Users::select('id', 'name')->get();
+        return view('admin/adopsi/create', compact('users'));
     }
 
     /**
@@ -36,6 +37,7 @@ class AdopsiController extends Controller
     {
         $request->validate([
             'nama_kucing' => 'required',
+            'id_user' => 'required',
             'image' => 'required|mimes:jpg,jpeg,png',
             'jenis_kucing' => 'required',
             'alasan_owner' => 'required',
@@ -44,12 +46,13 @@ class AdopsiController extends Controller
             'kontak' => 'required'
         ]);
 
-        $image = time() .'-' .$request->image->getClientOriginalName();
+        $image = time() . '-' . $request->image->getClientOriginalName();
         $request->image->move('upload/adopsi', $image);
 
         Adopsi::create([
-            
+
             'image' => $image,
+            'id_user' => $request->id_user,
             'nama_kucing' => $request->nama_kucing,
             'jenis_kucing' => $request->jenis_kucing,
             'alasan_owner' => $request->alasan_owner,
@@ -86,8 +89,9 @@ class AdopsiController extends Controller
      */
     public function edit($id)
     {
+        $users = Users::select('id', 'name')->get();
         $adopsi = Adopsi::whereId($id)->firstOrFail();
-        return view('admin/adopsi/edit', compact('adopsi'));
+        return view('admin/adopsi/edit', compact('users', 'adopsi'));
     }
 
     /**
@@ -121,7 +125,7 @@ class AdopsiController extends Controller
 
         $adopsi = Adopsi::select('image', 'id')->whereId($id)->first();
         if ($request->image) {
-            File::delete('upload/adopsi/' .$adopsi->image);
+            File::delete('upload/adopsi/' . $adopsi->image);
 
             $image = time() . '-' . $request->image->getClientOriginalName();
             $request->image->move('upload/adopsi', $image);
@@ -129,7 +133,7 @@ class AdopsiController extends Controller
             $data['image'] = $image;
         }
 
-        
+
         $adopsi->update($data);
 
         $request->session()->flash('sukses', '

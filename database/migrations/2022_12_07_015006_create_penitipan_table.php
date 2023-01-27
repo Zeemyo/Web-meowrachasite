@@ -24,7 +24,7 @@ class CreatePenitipanTable extends Migration
             $table->string('lama_titip', 50);
             $table->integer('layanan')->nullable();
             $table->integer('antar_jemput')->nullable();
-            $table->string('alamat', 528);
+            $table->string('alamat', 528)->nullable();
             $table->string('status')->default('Not Approved');
             $table->timestamps();
         });

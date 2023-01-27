@@ -15,6 +15,8 @@ class CreateKucingTable extends Migration
     {
         Schema::create('kucing', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->string('image', 50);
             $table->string('nama_kucing', 50);
             $table->string('ras', 50);

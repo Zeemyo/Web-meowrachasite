@@ -7,7 +7,18 @@
 
     <form action="/kucing" method="POST" enctype="multipart/form-data">
         @csrf
-        
+        <div class="form-group">
+            <label for="id_user">Nama user</label>
+            <select class="form-control" id="id_user" name="id_user">
+                <option selected disabled>Pilih User</option>
+                @foreach ($users as $row)
+                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                @endforeach
+            </select>
+            @error('name')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
         <div class="form-group">
             <label for="nama_kucing">Nama Kucing</label>
             <input type="text" class="form-control" id="nama_kucing" name="nama_kucing">

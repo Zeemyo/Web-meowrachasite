@@ -9,6 +9,18 @@
     <form action="/adopsi" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
+            <label for="id_user">Nama user</label>
+            <select class="form-control" id="id_user" name="id_user">
+                <option selected disabled>Pilih User</option>
+                @foreach ($users as $row)
+                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                @endforeach
+            </select>
+            @error('name')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+        <div class="form-group">
             <label for="nama_kucing">Nama Kucing</label>
             <input type="text" class="form-control" id="nama_kucing" name="nama_kucing">
             @error('nama_kucing')
@@ -33,7 +45,8 @@
 
         <div class="form-group">
             <label for="title">Alasan Owner</label>
-            <input type="text" class="form-control" id="alasan_owner" rows="5" name="alasan_owner" value="{{old('alasan_owner')}}">
+            <input type="text" class="form-control" id="alasan_owner" rows="5" name="alasan_owner"
+                value="{{ old('alasan_owner') }}">
             @error('alasan_owner')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -41,15 +54,16 @@
 
         <div class="form-group">
             <label for="medical_note">Medical Note</label>
-            <input type="text" class="form-control" id="medical_note" name="medical_note" value="{{old('medical_note')}}">
+            <input type="text" class="form-control" id="medical_note" name="medical_note"
+                value="{{ old('medical_note') }}">
             @error('medical_note')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
-        
+
         <div class="form-group">
             <label for="editor">deskripsi</label>
-            <textarea class="form-control" id="editor" rows="10" name="deskripsi">{{old('deskripsi')}}</textarea>
+            <textarea class="form-control" id="editor" rows="10" name="deskripsi">{{ old('deskripsi') }}</textarea>
             @error('deskripsi')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -57,7 +71,7 @@
 
         <div class="form-group">
             <label for="kontak">Kontak yang dapat dihubungi</label>
-            <input type="text" class="form-control" id="kontak" name="kontak" value="{{old('kontak')}}">
+            <input type="text" class="form-control" id="kontak" name="kontak" value="{{ old('kontak') }}">
             @error('kontak')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -67,4 +81,3 @@
         <a href="/adopsi" class="btn btn-secondary btn-sm">Kembali</a>
     </form>
 @endsection
-

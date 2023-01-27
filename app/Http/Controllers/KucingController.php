@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kucing;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -27,7 +28,8 @@ class KucingController extends Controller
      */
     public function create()
     {
-        return view('admin/kucing/create');
+        $users = Users::select('id', 'name')->get();
+        return view('admin/kucing/create', compact('users'));
     }
 
     /**
@@ -39,22 +41,24 @@ class KucingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            
+
             'nama_kucing' => 'required',
+            'id_user' => 'required',
             'image' => 'required|mimes:jpg,jpeg,png',
             'ras' => 'required',
             'gender' => 'required',
             'umur' => 'required',
             'merk_makanan' => 'required'
-            
+
         ]);
 
-        $image = time() .'-' .$request->image->getClientOriginalName();
+        $image = time() . '-' . $request->image->getClientOriginalName();
         $request->image->move('upload/kucing', $image);
 
         Kucing::create([
             'image' => $image,
             'nama_kucing' => $request->nama_kucing,
+            'id_user' => $request->id_user,
             'ras' => $request->ras,
             'gender' => $request->gender,
             'umur' => $request->umur,
@@ -77,7 +81,7 @@ class KucingController extends Controller
      */
     public function show($id)
     {
-        $post = Kucing::select('id', 'image', 'nama_kucing', 'ras', 'gender', 'umur', 'merk_makanan')->whereId($id)->firstOrFail();
+        $post = Kucing::whereId($id)->firstOrFail();
         return view('admin/kucing/show', compact('kucing'));
     }
 
@@ -89,8 +93,9 @@ class KucingController extends Controller
      */
     public function edit($id)
     {
-        $kucing = Kucing::select('id', 'image', 'nama_kucing', 'ras', 'gender', 'umur', 'merk_makanan')->whereId($id)->first();
-        return view('admin/kucing/edit', compact('kucing'));
+        $users = Users::select('id', 'name')->get();
+        $kucing = Kucing::whereId($id)->first();
+        return view('admin/kucing/edit', compact('users', 'kucing'));
     }
 
     /**
@@ -103,7 +108,6 @@ class KucingController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            
             'image' => 'required|mimes:jpg,jpeg,png',
             'nama_kucing' => 'required',
             'ras' => 'required',
@@ -113,6 +117,7 @@ class KucingController extends Controller
         ]);
 
         $data = [
+            'image' => $request->image,
             'nama_kucing' => $request->nama_kucing,
             'ras' => $request->ras,
             'gender' => $request->gender,
@@ -122,7 +127,7 @@ class KucingController extends Controller
 
         $kucing = Kucing::select('image', 'id')->whereId($id)->first();
         if ($request->image) {
-            File::delete('upload/kucing/' .$kucing->image);
+            File::delete('upload/kucing/' . $kucing->image);
 
             $image = time() . '-' . $request->image->getClientOriginalName();
             $request->image->move('upload/kucing', $image);
@@ -153,7 +158,7 @@ class KucingController extends Controller
         // $data = ['id', 'image', 'nama_kucing', 'ras', 'gender', 'umur', 'merk_makanan'];
 
         Kucing::whereId($id)->delete();
-        
+
         $request->session()->flash('sukses', '
             <div class="alert alert-success" role="alert">
                 Data berhasil dihapus

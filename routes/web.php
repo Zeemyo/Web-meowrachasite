@@ -38,6 +38,10 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,user']], function () {
         return view('/admin/dashboard');
     });
 
+    Route::get('/kucing', function () {
+        return view('/admin/kucing');
+    });
+
     Route::get('/konsultasi', function () {
         return view('/admin/konsultasi');
     });
@@ -63,6 +67,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,user']], function () {
     Route::resource('/penitipan', 'PenitipanController');
 
     Route::resource('/penitipan/transaksi', 'TransaksiController');
+
+    Route::resource('/users', 'UserController');
 
     // Route::get('/transaksi', [TransaksiController::class, 'index']);
 
