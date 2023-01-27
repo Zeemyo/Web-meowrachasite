@@ -3,11 +3,12 @@
 
 @section('content')
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Kucing</h1>
+    <h1 class="h3 mb-4 text-gray-800">Edit Kucing</h1>
 
-    <form action="/kucing/{{ $kucing->id }}" method="POST">
+    <form action="/kucing/{{ $kucing->id }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
+
         <div class="row">
             <div class="col-md-2">
                 <img src="/upload/kucing/{{ $kucing->image }}" width="100%" height="150px" class="mt-2" alt="">
