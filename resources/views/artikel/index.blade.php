@@ -1,11 +1,28 @@
 @extends('artikel/template/app')
 
-@section('content')
-   
+<div>
+    {{-- head --}}
+@include('artikel/template/head')
+</div>
 
+@section('content')
+
+
+   
+    <div class="container">
+        @include('artikel/template/about')
+    </div>
+
+    <div class="container">
+        @include('artikel/template/artikel-carousell')
+    </div>
+
+    <div class="container">
+        @include('artikel/template/services')
+    </div>
     
 
-    <h2 class="my-4 text-center">@yield('title')</h2>
+    <!-- <h2 class="my-4 text-center">@yield('title')</h2>
 
     <div class="d-flex justify-content-center">
         
@@ -26,7 +43,7 @@
                     
             @endforeach
         </div>
-        <div class="d-flex justify-content-center mt-4">{{$artikel->links()}}</div>
+        <div class="d-flex justify-content-center mt-4">{{$artikel->links()}}</div> -->
 
         
         

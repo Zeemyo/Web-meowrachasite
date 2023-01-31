@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kategori;
 use App\Models\Post;
 use App\Models\Adopsi;
+use App\Models\Konsultasi;
 use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
@@ -13,22 +14,22 @@ class ArtikelController extends Controller
     {
         
         $artikel = Post::select('sampul', 'judul', 'slug','konten', 'created_at')->latest()->paginate(10);    
-        $kategori = Kategori::select('slug', 'nama')->orderBy('nama', 'asc')->get();
-        return view('artikel/index', compact('artikel', 'kategori'));
+        
+        return view('artikel/index', compact('artikel'));
     }
 
-    public function artikel($slug)
+    public function artikel()
     {
         
-        $artikel = Post::select('id', 'judul', 'konten', 'id_kategori', 'created_at', 'sampul')->where('slug', $slug)->firstOrFail();
-        $kategori = Kategori::select('slug', 'nama')->orderBy('nama', 'asc')->get();
+        $artikel = Post::select('id', 'judul', 'konten', 'id_kategori', 'created_at', 'sampul')->latest()->paginate(10); 
+        $kategori = Kategori::select('nama')->orderBy('nama', 'asc')->get();
         return view('artikel/artikel', compact('artikel', 'kategori'));
     }
 
-    public function kategori($slug)
+    public function kategori()
     {
         
-        $kategori = Kategori::select('id')->where('slug', $slug)->firstOrFail();       
+              
         $artikel = Post::select('sampul', 'judul', 'slug', 'created_at')->where('id_kategori', $kategori->id)->latest()->paginate(10);     
         $kategori = Kategori::select('slug', 'nama')->orderBy('nama', 'asc')->get();
         return view('artikel/index', compact('artikel', 'kategori'));
@@ -38,8 +39,16 @@ class ArtikelController extends Controller
     {
         
         $adopsi = Adopsi::select('image', 'nama_kucing', 'jenis_kucing','deskripsi', 'alasan_owner', 'created_at')->latest()->paginate(10);
-        $kategori = Kategori::select('slug', 'nama')->orderBy('nama', 'asc')->get();
-        return view('artikel/adopsi/index', compact('adopsi', 'kategori'));
+        return view('artikel/adopsi', compact('adopsi'));
     }
+
+    public function konsultasi()
+    {
+        
+        $konsultasi = Konsultasi::select('image', 'nama_konsultan', 'deskripsi', 'kontak', 'created_at')->latest()->paginate(10);
+        return view('artikel/konsultasi', compact('konsultasi'));
+    }
+
+    
 
 }

@@ -87,3 +87,6 @@ route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [ArtikelController::class, 'index']);
 Route::get('/{slug}', [ArtikelController::class, 'artikel']);
 Route::get('/artikel-kategori/{slug}', [ArtikelController::class, 'kategori']);
+Route::get('/artikel/konsultasi', [ArtikelController::class, 'konsultasi']);
+Route::get('/artikel/adopsi', [ArtikelController::class, 'adopsi']);
+Route::get('/artikel/artikel', [ArtikelController::class, 'artikel']);

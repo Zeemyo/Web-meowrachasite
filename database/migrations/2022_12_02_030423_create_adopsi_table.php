@@ -24,7 +24,7 @@ class CreateAdopsiTable extends Migration
             $table->string('alasan_owner', 50);
             $table->string('medical_note', 240);
             $table->text('deskripsi');
-            $table->integer('kontak');
+            $table->string('kontak', 16);
             $table->timestamps();
         });
     }

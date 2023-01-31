@@ -1,24 +1,16 @@
 <!doctype html>
 <html lang="en">
-{{-- head --}}
-    @include('artikel/template/head')
+{{-- css --}}
+    @include('artikel/template/css')
 
   <body id="page-top">
     {{-- navbar --}}
+    
     @include('artikel/template/navbar')
 
-    <div class="container">
-        @include('artikel/template/about')
-    </div>
-    <div class="container">
-        @include('artikel/template/artikel-carousell')
-    </div>
-    <div class="container">
-        @include('artikel/template/services')
-    </div>
-    <div class="container">
-        @include('artikel/template/konsultasi-page')
-    </div>
+    
+
+    
 
     <!-- <div class="container">
         @yield('content')
@@ -28,5 +20,11 @@
    {{-- javascript --}}
    @include('sb-admin/javascript')
   </body>
+  <br>
+    <br> 
+
+    <div class="container">
+        @include('artikel/template/footer')
+    </div>
   
 </html>

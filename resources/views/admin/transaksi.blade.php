@@ -11,13 +11,11 @@
     <table class="table text-center mt-3" width="100%">
         <thead>
             <tr>
-                <td>Nomor Order</td>
                 <td>VA Number</td>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>{{ $transaksi->id_penitipan }}</td>
                 <td>{{ $transaksi->midtrans_va_number }}</td>
             </tr>
         </tbody>

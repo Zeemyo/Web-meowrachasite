@@ -13,7 +13,9 @@
             <select class="form-control" id="id_user" name="id_user">
                 <option selected disabled>Pilih User</option>
                 @foreach ($users as $row)
-                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                    @if ($row->id == Auth::id())
+                        <option value="{{ $row->id }}">{{ $row->name }}</option>
+                    @endif
                 @endforeach
             </select>
             @error('name')

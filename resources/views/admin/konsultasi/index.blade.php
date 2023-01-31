@@ -10,7 +10,7 @@
     @if (Auth::user()->role == 'admin')
         <h1 class="h3 mb-4 text-gray-800">Konsultasi</h1>
 
-        <a href="/konsultasi/create/" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Tambah konsultasi</a>
+        <a href="/konsultasi/create/" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>Tambah konsultasi</a>
 
 
 

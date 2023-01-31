@@ -9,7 +9,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Adopsi</h1>
 
-    <a href="/adopsi/create/" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>Tambah adopsi</a>
+    <a href="/adopsi/create/" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Buat adopsi</a>
 
 
 

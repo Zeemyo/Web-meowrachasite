@@ -70,7 +70,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="/adopsi">Adopsi</a>
-                <a class="collapse-item" href="/konsultasi">Konsultasi</a>
+                <a class="collapse-item" href="/artikel/konsultasi">Konsultasi</a>
                 <a class="collapse-item" href="/penitipan">Penitipan</a>
             </div>
         </div>
