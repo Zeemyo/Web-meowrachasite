@@ -5,7 +5,7 @@
     <a href="/adopsi/{{ $adopsi->id }}/edit" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> Edit</a>
     <a href="/adopsi" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i> Kembali</a>
     <div class="card mt-3">
-        <img src="/upload/adopsi/{{ $adopsi->image }}" height="450px" class="card-img-top" alt="...">
+        <img src="/upload/adopsi/{{ $adopsi->image }}" style="width: 300px; height: 400px" class="card-img-top" alt="...">
         <div class="card-body">
 
             <label for="staticEmail" class="col-sm-2 col-form-label">Nama Kucing</label>

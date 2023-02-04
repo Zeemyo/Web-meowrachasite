@@ -5,8 +5,8 @@
     @foreach ($artikel as $row)
         <div class="col-sm-4">
             <div class="thumbnail">
-                <img src="/upload/post/{{ $row->sampul }}" class="card-img-top" alt="..." width="400"
-                    height="auto"></a>
+                <img src="/upload/post/{{ $row->sampul }}" class="card-img-top" alt="..."
+                    style="width: 300px; height: 400px"></a>
 
                 <a href="/artikel/artikel">
                     <p><strong>{{ $row->judul }}</strong></p>

@@ -214,7 +214,8 @@
             @foreach ($adopsi as $row)
                 <div class="col-sm-4">
                     <div class="thumbnail">
-                        <img src="/upload/adopsi/{{ $row->image }}" alt="image" width="400" height="300">
+                        <img src="/upload/adopsi/{{ $row->image }}" alt="image"
+                            style="width: 300px; height: 400px">
                         <p><strong>{{ $row->nama_kucing }}</strong></p>
                         <p>{{ $deskripsi = substr($row->deskripsi, 0, 80) }}</p>
                         <a href="/adopsi" class="btn btn-secondary btn-sm">Adopt

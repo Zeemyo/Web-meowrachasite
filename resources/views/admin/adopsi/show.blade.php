@@ -4,7 +4,8 @@
 @section('content')
     <div class="card mt-3">
         <div class="card-body">
-            <img src="/upload/adopsi/{{ $adopsi->image }}" max-width="50" class="card-img-top" alt="...">
+            <img src="/upload/adopsi/{{ $adopsi->image }}" style="width: auto; height: auto" class="card-img-top"
+                alt="...">
             <h2 class="card-body">Nama Kucing : {{ $adopsi->nama_kucing }}</h2>
             <h2 class="card-body">Kontak : {{ $adopsi->kontak }}</h2>
             <h2 class="card-body">Jenis Kucing : {{ $adopsi->jenis_kucing }}</h2>

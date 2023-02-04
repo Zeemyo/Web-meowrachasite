@@ -34,14 +34,14 @@
         <div class="row">
             @foreach ($konsultasi as $row)
                 <div class="col-sm-3">
-                    <div class="well">
-                        <img src="/upload/post/{{ $row->image }}" class="img-circle" height="70" width="70"
+                    <div class="well" style="width: auto; height: auto">
+                        <img src="/upload/post/{{ $row->image }}" class="img-circle" style="width: 70px; height: 70px"
                             alt="Avatar"></a>
                         <p><b>{{ $row->nama_konsultan }}</b></p>
                     </div>
                 </div>
                 <div class="col-sm-9">
-                    <div class="well">
+                    <div class="well" style="width: auto; height: auto">
                         <p>{{ $deskripsi = substr($row->deskripsi, 0, 80) }}...</p>
                         <p>{{ $row->kontak }}</p>
                         <a href="https://wa.me/{{ $row->kontak }}" class="btn btn-primary">Contact
