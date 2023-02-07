@@ -11,11 +11,13 @@
     <table class="table text-center mt-3" width="100%">
         <thead>
             <tr>
+                <td>Total Tagihan</td>
                 <td>VA Number</td>
             </tr>
         </thead>
         <tbody>
             <tr>
+                <td>{{ $transaksi->total }}</td>
                 <td>{{ $transaksi->midtrans_va_number }}</td>
             </tr>
         </tbody>

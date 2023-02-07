@@ -59,16 +59,17 @@
         <div class="form-group">
             <label for="layanan" class="form-label">Extra</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="layanan" id="Layanan_1" value="50000">
-                <label for="layanan" class="form-label">Grooming</label>
+                <input class="form-check-input" type="checkbox" name="layanan[]" id="Layanan_1" value="50000">
+                <label for="layanan1" class="form-label">Grooming</label> <a> | Rp.50000</a>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="layanan" id="Layanan_2" value="150000">
-                <label for="layanan" class="form-label">Pengobatan</label>
+                <input class="form-check-input" type="checkbox" name="layanan[]" id="Layanan_2" value="150000">
+                <label for="layanan2" class="form-label">Pengobatan</label> <a> | Rp.150000</a>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="layanan" id="Layanan_3" value="300000">
-                <label for="layanan" class="form-label">Extra Care</label>
+                <input class="form-check-input" type="checkbox" name="layanan[]" id="Layanan_3" value="300000">
+                <label for="layanan3" class="form-label">Extra Care</label> <a> | Rp.300000</a>
+
             </div>
 
             {{-- <input type="text" class="form-control" id="layanan" name="layanan">
@@ -82,7 +83,7 @@
             <a style="font-style: italic;">Khusus Area Bandung</a>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="antar_jemput" id="antar_jemput" value="35000">
-                <label for="antar_jemput" class="form-label">Antar Jemput</label>
+                <label for="antar_jemput" class="form-label">Antar Jemput</label> <a> | Rp.35000</a>
             </div>
 
             <a>Alamat</a>

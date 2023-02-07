@@ -53,11 +53,13 @@ class PenitipanController extends Controller
             'id_user' => 'required'
         ]);
 
+        $extra = array_sum($request->input('layanan'));
+
         $penitipan = new Penitipan;
         $penitipan->tanggal_titip = Str::title($request->tanggal_titip);
         $penitipan->tanggal_checkout = Str::title($request->tanggal_checkout);
         $penitipan->lama_titip = Str::title($request->lama_titip);
-        $penitipan->layanan = $request->layanan;
+        $penitipan->layanan = $extra;
         $penitipan->antar_jemput = $request->antar_jemput;
         $penitipan->alamat = $request->alamat;
         $penitipan->id_kucing = $request->id_kucing;
