@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Users;
 use App\Models\Kategori;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -30,8 +31,9 @@ class PostController extends Controller
      */
     public function create()
     {
+        $users = Users::select('id', 'name')->get();
         $kategori = Kategori::select('id', 'nama')->get();
-        return view('admin/post/create', compact('kategori'));
+        return view('admin/post/create', compact('kategori', 'users'));
     }
 
     /**
@@ -43,19 +45,22 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'id_user' => 'required',
             'judul' => 'required',
             'sampul' => 'required|mimes:jpg,jpeg,png',
             'konten' => 'required',
             'kategori' => 'required'
         ]);
 
-        $sampul = time() .'-' .$request->sampul->getClientOriginalName();
+        // dd($request);
+        $sampul = time() . '-' . $request->sampul->getClientOriginalName();
         $request->sampul->move('upload/post', $sampul);
 
         Post::create([
             'sampul' => $sampul,
             'judul' => $request->judul,
             'konten' => $request->konten,
+            'id_user' => $request->id_user,
             'id_kategori' => $request->kategori,
             'slug' => Str::slug($request->judul, '-')
         ]);
@@ -88,9 +93,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        $users = Users::select('id', 'name')->get();
         $kategori = Kategori::select('id', 'nama')->get();
         $post = Post::select('id', 'judul', 'sampul', 'konten', 'id_kategori')->whereId($id)->firstOrFail();
-        return view('admin/post/edit', compact('post', 'kategori'));
+        return view('admin/post/edit', compact('post', 'kategori', 'users'));
     }
 
     /**
@@ -103,6 +109,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'id_user' => 'required',
             'judul' => 'required',
             'sampul' => 'mimes:jpg,jpeg,png',
             'kategori' => 'required',
@@ -110,6 +117,7 @@ class PostController extends Controller
         ]);
 
         $data = [
+            'id_user' => $request->users,
             'judul' => $request->judul,
             'konten' => $request->konten,
             'id_kategori' => $request->kategori,
@@ -118,7 +126,7 @@ class PostController extends Controller
 
         $post = Post::select('sampul', 'id')->whereId($id)->first();
         if ($request->sampul) {
-            File::delete('upload/post/' .$post->sampul);
+            File::delete('upload/post/' . $post->sampul);
 
             $sampul = time() . '-' . $request->sampul->getClientOriginalName();
             $request->sampul->move('upload/post', $sampul);
@@ -153,6 +161,4 @@ class PostController extends Controller
         ');
         return redirect('/post');
     }
-
-
 }

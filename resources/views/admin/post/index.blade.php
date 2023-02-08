@@ -17,6 +17,7 @@
         <thead>
             <tr>
                 <th scope="col">No</th>
+                <th scope="col">The Poster</th>
                 <th scope="col">Sampul</th>
                 <th scope="col">Judul</th>
                 <th scope="col">Kategori</th>
@@ -28,6 +29,7 @@
             @foreach ($post as $row)
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
+                    <th>{{ $row->users->name }}</th>
                     <td><img src="/upload/post/{{ $row->sampul }}" alt="" width="80px" height="80px"></td>
                     <td>{{ $row->judul }}</td>
                     <td>{{ $row->kategori->nama }}</td>

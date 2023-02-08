@@ -15,9 +15,12 @@
                 <h3 class="card-title"><strong>{{ $row->judul }}</strong></h3>
             </div>
             <small class="card-text">
-                <span class="text-muted"><a href="/artikel-kategori/{{ $row->kategori->slug }}">Tag:
+                <span class="text"><a>Uploader by:
+                        {{ $row->users->name }}</a></span>
+                <br>
+                <span class="text"><a>Tag:
                         {{ $row->kategori->nama }}</a></span>
-                -
+
                 <span class="text-muted">{{ $row->created_at->diffForHumans() }}</span>
 
 
