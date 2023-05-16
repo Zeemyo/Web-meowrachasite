@@ -12,7 +12,6 @@ class TransaksiController extends Controller
     {
         $transactions = Transaksi::get();
 
-
         $data = [
             'title' => 'Home',
             'transactions' => $transactions

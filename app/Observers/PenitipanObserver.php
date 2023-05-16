@@ -25,7 +25,7 @@ class PenitipanObserver
             $params = [
                 'json' => [
                     'payment_type' => 'bank_transfer',
-                    'bank_transfer' => json_decode(json_encode(["bank" => "bni"])),
+                    'bank_transfer' => json_decode(json_encode(["bank" => "permata"])),
                     'transaction_details' => json_decode(json_encode(["order_id" => time(), "gross_amount" => 65000 + $penitipan->layanan + $penitipan->antar_jemput])),
                 ]
             ];
@@ -35,7 +35,7 @@ class PenitipanObserver
             $save_transaction = new Transaksi;
             $save_transaction->midtrans_transaction_id = $transaction->transaction_id;
             $save_transaction->midtrans_order_id = $transaction->order_id;
-            $save_transaction->midtrans_va_number = $transaction->va_numbers[0]->va_number;
+            $save_transaction->midtrans_va_number = $transaction->permata_va_number;
             $save_transaction->total = $transaction->gross_amount;
             $save_transaction->id_penitipan = $penitipan->id;
             $save_transaction->save();
